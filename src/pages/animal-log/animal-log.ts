@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Animal } from '../../model/Animal';
+
 /**
  * Generated class for the AnimalLogPage page.
  *
@@ -15,10 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AnimalLogPage {
 
-  public animalName:string = "";
+  public animal:Animal = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.animalName = this.navParams.data.animal;
+
+    
+
+    this.animal = <Animal> {
+      name: "name",
+      description: ""
+    };
+
   }
 
   ionViewDidLoad() {
