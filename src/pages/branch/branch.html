@@ -16,10 +16,10 @@
 <ion-content padding>
 
   <ion-list>
-    <button ion-item *ngFor = "let animal of animals">
+    <button (click) = "viewLog(animal)" ion-item *ngFor = "let animal of animals">
       {{animal}}
       <ion-icon style = "float:right;" name = "arrow-forward">
-
+        
       </ion-icon>
     </button>
   </ion-list>

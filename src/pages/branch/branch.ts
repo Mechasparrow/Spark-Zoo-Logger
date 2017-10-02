@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import {AnimalLogPage} from '../animal-log/animal-log';
+
 /**
  * Generated class for the Branch page.
  *
@@ -18,11 +20,10 @@ export class BranchPage {
   public animals:string[] = [];
 
   public mammals:string[] = [
-    "cats",
-    "dogs",
-    "rabbits"
+    "Black and White Colobus Monkey",
+    "Francois Langur",
+    "Chimpanzee"
   ]
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -34,9 +35,15 @@ export class BranchPage {
 
   }
 
-
-
   ionViewDidLoad() {
+
+  }
+
+  viewLog(animal:string) {
+
+    this.navCtrl.push(AnimalLogPage, {
+      animal: animal
+    })
 
   }
 
