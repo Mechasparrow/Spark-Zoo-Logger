@@ -15,14 +15,29 @@ export class BranchPage {
 
   public branch:string = "";
 
+  public animals:string[] = [];
+
+  public mammals:string[] = [
+    "cats",
+    "dogs",
+    "rabbits"
+  ]
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.branch = this.navParams.data.branch;
 
+    if (this.branch == "Mammals") {
+      this.animals = this.mammals;
+    }
+
   }
 
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Branch');
+
   }
 
 }
