@@ -5,7 +5,14 @@ import { NavController } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
+
+  public animals:string[] = [
+    "Birds",
+    "Reptiles",
+    "Big Cats"
+  ];
 
   constructor(public navCtrl: NavController) {
 
