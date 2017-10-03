@@ -19,14 +19,16 @@ export class AnimalLogPage {
 
   public animal:Animal = null;
 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    
-
-    this.animal = <Animal> {
-      name: "name",
-      description: ""
-    };
+    if (this.navParams.data.animal == "Chimpanzee") {
+      this.animal = <Animal> {
+        name: this.navParams.data.animal,
+        description: "A Chimp"
+      };
+    }
 
   }
 
