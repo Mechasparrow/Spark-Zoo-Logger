@@ -27,7 +27,8 @@
     {
       "name": "Mammals",
       "animals": [
-
+        "Chimps",
+        "Zebras"
       ]
     }
   ]

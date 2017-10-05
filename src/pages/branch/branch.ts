@@ -3,12 +3,18 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import {AnimalLogPage} from '../animal-log/animal-log';
 
+import { Http } from '@angular/http';
+import {Zoo} from '../../api/Zoo';
+
 /**
  * Generated class for the Branch page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+
+
 @Component({
   selector: 'page-branch',
   templateUrl: 'branch.html',
@@ -19,19 +25,17 @@ export class BranchPage {
 
   public animals:string[] = [];
 
-  public mammals:string[] = [
-    "Black and White Colobus Monkey",
-    "Francois Langur",
-    "Chimpanzee"
-  ]
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
 
     this.branch = this.navParams.data.branch;
 
-    if (this.branch == "Mammals") {
-      this.animals = this.mammals;
-    }
+    var animals_promise = Zoo.getAnimalsByBranch(http, this.branch);
+
+    let that = this;
+
+    animals_promise.then (function (animals) {
+      that.animals = <string[]>animals;
+    })
 
   }
 
@@ -42,7 +46,8 @@ export class BranchPage {
   viewLog(animal:string) {
 
     this.navCtrl.push(AnimalLogPage, {
-      animal: animal
+      animal: animal,
+      branch: this.branch,
     })
 
   }
