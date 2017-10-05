@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { BranchPage} from '../pages/branch/branch';
 import { AnimalLogPage } from '../pages/animal-log/animal-log';
 
+import { HttpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +20,7 @@ import { AnimalLogPage } from '../pages/animal-log/animal-log';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

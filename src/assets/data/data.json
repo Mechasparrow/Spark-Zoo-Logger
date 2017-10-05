@@ -1,0 +1,34 @@
+{
+  "branchs": [
+    {
+      "name": "Fish",
+      "animals": [
+
+      ]
+    },
+    {
+      "name": "Amphibians",
+      "animals" : [
+
+      ]
+    },
+    {
+      "name": "Reptiles",
+      "animals": [
+
+      ]
+    },
+    {
+      "name": "Birds",
+      "animals": [
+
+      ]
+    },
+    {
+      "name": "Mammals",
+      "animals": [
+
+      ]
+    }
+  ]
+}
