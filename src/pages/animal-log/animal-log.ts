@@ -30,9 +30,6 @@ export class AnimalLogPage {
     var animal_name:string = navParams.data.animal;
     var animal_branch:string = navParams.data.branch;
 
-    console.log(animal_branch)
-    console.log(animal_name);
-
     var animal_promise = Zoo.getAnimalFromBranch(http, animal_name, animal_branch);
 
     let that = this;

@@ -31,7 +31,9 @@
           "name": "chimp"
         },
         {
-          "name": "panda"
+          "name": "Red Panda",
+          "description": "",
+          "image": "https://www.stlzoo.org/files/cache/70b187378872e134093be05eb346c363_f1711.jpg"
         }
       ]
     }
