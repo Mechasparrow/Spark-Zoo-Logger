@@ -67,7 +67,33 @@ export class Zoo {
 
   }
 
-  static getAnimalFromBranch(http: Http, animal:string, branch:string) {
+  static getAnimalFromBranch(http: Http, animal_name:string, branch:string) {
+
+    var animal_promise = new Promise(function (resolve, reject) {
+
+      var raw_data_promise = Zoo.getData(http)
+
+      raw_data_promise.then (function (data) {
+
+        var branches = data.branchs;
+
+        var animals = branches.find(function (item) {
+          return item.name == branch;
+        }).animals;
+
+        var animal = animals.find(function (item) {
+          return item.name == animal_name
+        })
+
+        resolve(animal);
+
+      }).catch (function (error) {
+        reject(error);
+      })
+
+    })
+
+    return animal_promise;
 
   }
 

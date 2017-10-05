@@ -3,6 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Animal } from '../../model/Animal';
 
+import { Http } from '@angular/http';
+
+import { Zoo } from '../../api/Zoo';
+
+
+
 /**
  * Generated class for the AnimalLogPage page.
  *
@@ -17,18 +23,26 @@ import { Animal } from '../../model/Animal';
 })
 export class AnimalLogPage {
 
-  public animal:Animal = null;
+  public animal:Animal = new Animal();
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
 
+    var animal_name:string = navParams.data.animal;
+    var animal_branch:string = navParams.data.branch;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(animal_branch)
+    console.log(animal_name);
 
-    if (this.navParams.data.animal == "Chimpanzee") {
-      this.animal = <Animal> {
-        name: this.navParams.data.animal,
-        description: "A Chimp"
-      };
-    }
+    var animal_promise = Zoo.getAnimalFromBranch(http, animal_name, animal_branch);
+
+    let that = this;
+
+    animal_promise.then (function (animal) {
+
+      that.animal = <Animal>animal;
+
+    })
+
 
   }
 
