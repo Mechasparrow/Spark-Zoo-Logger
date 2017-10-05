@@ -50,7 +50,11 @@ export class Zoo {
 
           var animals = branches.find(function (item) {
             return item.name == branch;
-          }).animals;
+          }).animals.map(function (item) {
+            return item.name;
+          });
+
+          console.log(animals);
 
           resolve(animals);
 
@@ -63,7 +67,7 @@ export class Zoo {
 
   }
 
-  static getAnimalFromBranch() {
+  static getAnimalFromBranch(http: Http, animal:string, branch:string) {
 
   }
 

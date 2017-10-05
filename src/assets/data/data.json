@@ -27,8 +27,12 @@
     {
       "name": "Mammals",
       "animals": [
-        "Chimps",
-        "Zebras"
+        {
+          "name": "chimp"
+        },
+        {
+          "name": "panda"
+        }
       ]
     }
   ]
