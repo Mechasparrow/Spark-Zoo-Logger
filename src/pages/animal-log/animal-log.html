@@ -17,7 +17,7 @@
 
     <ion-row>
         <div ion-col></div>
-        <div class ="animal-image" ion-col>
+        <div text-center ion-col>
             <img src = "{{animal.image}}" />
         </div>
         <div ion-col></div>
@@ -37,7 +37,7 @@
 
     <ion-list>
 
-        <button mode = "ios" ion-item>
+        <button (click) = "logFeeding()" mode = "ios" ion-item>
             Log Feeding
         </button>
 

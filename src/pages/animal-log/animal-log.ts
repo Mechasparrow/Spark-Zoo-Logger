@@ -7,6 +7,9 @@ import { Http } from '@angular/http';
 
 import { Zoo } from '../../api/Zoo';
 
+//Modals
+import {FeedingComponent} from '../../components/feeding/feeding';
+
 //Pages
 
 import { ViewLogPage } from '../view-log/view-log';
@@ -51,6 +54,13 @@ export class AnimalLogPage {
 
   viewLog() {
     this.navCtrl.push(ViewLogPage, {animal: this.animal.name});
+  }
+
+  logFeeding() {
+
+
+
+
   }
 
 }
