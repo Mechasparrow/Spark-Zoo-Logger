@@ -9,14 +9,13 @@
 <ion-content padding>
 
   <ion-list>
-    <button (click) = "viewBranch(animal)" ion-item *ngFor = "let animal of animals">
-      {{animal}}
-      <ion-icon style = "float:right;" name = "arrow-forward">
+      <button (click) = "viewBranch(animal)" ion-item *ngFor = "let branch of branches">
+          {{branch}}
 
-      </ion-icon>
+          <ion-icon float-right name = "arrow-forward">
+
+          </ion-icon>
     </button>
   </ion-list>
-
-
 
 </ion-content>

@@ -14,7 +14,7 @@ import { Zoo } from '../../api/Zoo';
 
 export class HomePage {
 
-  public animals:string[] = [];
+  public branches:string[] = [];
 
   constructor(public navCtrl: NavController, public http:Http) {
 
@@ -23,7 +23,7 @@ export class HomePage {
     let that = this;
 
     data_promise.then(function (data) {
-        that.animals = <string[]>data;
+        that.branches = <string[]>data;
     });
 
   }
