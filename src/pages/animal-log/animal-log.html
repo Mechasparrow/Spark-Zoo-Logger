@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color = "dark">
+  <ion-navbar color = "dark" align-title ="center" >
     <ion-title>{{animal.name}}</ion-title>
   </ion-navbar>
 
@@ -15,7 +15,12 @@
 
 <ion-content padding>
 
-  <h1 class = "info-block">Name: {{animal.name}}</h1>
-  <img src = "{{animal.image}}" />
+    <ion-row>
+        <div ion-col></div>
+        <div class ="animal-image" ion-col>
+            <img src = "{{animal.image}}" />
+        </div>
+        <div ion-col></div>
+    </ion-row>
 
 </ion-content>
