@@ -25,7 +25,7 @@
 
     <ion-row>
 
-        <button margin ion-col ion-button block round outline>
+        <button (click) = "viewLog()" margin ion-col ion-button block round outline>
                 View Logs
         </button>
 
@@ -37,32 +37,16 @@
 
     <ion-list>
 
-        <button ion-item>
+        <button mode = "ios" ion-item>
             Log Feeding
-
-
-            <ion-icon float-right name = "arrow-forward">
-
-            </ion-icon>
-
         </button>
 
-        <button ion-item>
+        <button mode = "ios" ion-item>
             Log Animal Status
-
-
-            <ion-icon float-right name = "arrow-forward">
-
-            </ion-icon>
         </button>
 
-        <button ion-item>
+        <button mode = "ios" ion-item>
             Log Animal Behavior
-
-
-            <ion-icon float-right name = "arrow-forward">
-
-            </ion-icon>
         </button>
 
     </ion-list>

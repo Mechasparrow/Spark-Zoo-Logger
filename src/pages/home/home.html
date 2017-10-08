@@ -9,13 +9,9 @@
 <ion-content padding>
 
   <ion-list>
-      <button (click) = "viewBranch(branch)" ion-item *ngFor = "let branch of branches">
+      <button mode = "ios" (click) = "viewBranch(branch)" ion-item *ngFor = "let branch of branches">
           {{branch}}
-
-          <ion-icon float-right name = "arrow-forward">
-
-          </ion-icon>
-    </button>
+      </button>
   </ion-list>
 
 </ion-content>

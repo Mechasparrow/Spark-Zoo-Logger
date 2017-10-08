@@ -1,15 +1,19 @@
+import { Storage } from '@ionic/storage';
 import { Log } from '../model/Log';
 
 export class AnimalLogDatabase {
 
-  
+  constructor(private storage:Storage) {
 
+  }
 
   setAnimalLog(animal:string, animal_logs:Log[]) {
 
+    let that = this;
+
     var set_animal_promise = new Promise(function (resolve, reject) {
-      localforage.setItem(animal, animal_logs).then (function () {
-        return localforage.getItem(animal);
+      that.storage.set(animal, animal_logs).then (function () {
+        return that.storage.get(animal);
       }).then (function (value) {
         resolve(value);
       }).catch (function (err) {
@@ -23,10 +27,17 @@ export class AnimalLogDatabase {
 
   getAnimalLogs(animal:string) {
 
+    let that = this;
+
     var get_animal_promise = new Promise (function (resolve, reject) {
 
-      localforage.getItem(animal).then (function (logs) {
-          resolve (logs)
+      that.storage.get(animal).then (function (logs) {
+
+          if (logs == null) {
+            resolve([]);
+          }else {
+            resolve (logs)
+          }
       }).catch (function (error) {
           resolve([]);
           console.log(error);

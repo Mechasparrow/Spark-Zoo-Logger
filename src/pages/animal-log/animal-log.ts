@@ -7,7 +7,9 @@ import { Http } from '@angular/http';
 
 import { Zoo } from '../../api/Zoo';
 
+//Pages
 
+import { ViewLogPage } from '../view-log/view-log';
 
 /**
  * Generated class for the AnimalLogPage page.
@@ -45,6 +47,10 @@ export class AnimalLogPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AnimalLogPage');
+  }
+
+  viewLog() {
+    this.navCtrl.push(ViewLogPage, {animal: this.animal.name});
   }
 
 }
