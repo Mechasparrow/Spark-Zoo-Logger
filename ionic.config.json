@@ -1,6 +1,8 @@
 {
   "name": "Zoo-Proj",
   "app_id": "",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

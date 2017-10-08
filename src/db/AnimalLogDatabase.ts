@@ -1,10 +1,11 @@
-import localForage from "localforage";
-
 import { Log } from '../model/Log';
 
 export class AnimalLogDatabase {
 
-  static setAnimalLog(animal:string, animal_logs:Log[]) {
+  
+
+
+  setAnimalLog(animal:string, animal_logs:Log[]) {
 
     var set_animal_promise = new Promise(function (resolve, reject) {
       localforage.setItem(animal, animal_logs).then (function () {
@@ -20,7 +21,7 @@ export class AnimalLogDatabase {
 
   }
 
-  static getAnimalLogs(animal:string) {
+  getAnimalLogs(animal:string) {
 
     var get_animal_promise = new Promise (function (resolve, reject) {
 
