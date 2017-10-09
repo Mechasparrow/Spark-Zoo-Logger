@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 
 import { Animal } from '../../model/Animal';
 
 import { Http } from '@angular/http';
 
 import { Zoo } from '../../api/Zoo';
+
+//Storage
+
+import {Storage} from '@ionic/storage';
+import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
 
 //Modals
 import {FeedingComponent} from '../../components/feeding/feeding';
@@ -30,12 +35,22 @@ export class AnimalLogPage {
 
   public animal:Animal = new Animal();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+  public animal_name:string;
+  public animal_branch:string;
 
-    var animal_name:string = navParams.data.animal;
-    var animal_branch:string = navParams.data.branch;
+  private database:AnimalLogDatabase;
 
-    var animal_promise = Zoo.getAnimalFromBranch(http, animal_name, animal_branch);
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public http:Http, public storage: Storage) {
+
+    //Initialize the connection to the local database
+    this.database = new AnimalLogDatabase(storage);
+
+    //Retrieve the animal information
+
+    this.animal_name = navParams.get("animal");
+    this.animal_branch = navParams.get("branch");
+
+    var animal_promise = Zoo.getAnimalFromBranch(http, this.animal_name, this.animal_branch);
 
     let that = this;
 
@@ -56,10 +71,62 @@ export class AnimalLogPage {
     this.navCtrl.push(ViewLogPage, {animal: this.animal.name});
   }
 
+
   logFeeding() {
+    const feedingModal = this.modalCtrl.create(FeedingComponent, {
+      animal: this.animal_name,
+      branch: this.animal_branch
+    });
 
+    let that = this;
 
+    feedingModal.onDidDismiss(function (log) {
 
+      let log:Log = <Log> log;
+
+      var add_log = that.addLog(log);
+
+      add_log.then(function (logs) {
+        console.log(logs)
+      }).catch (function (error) {
+        console.log(error);
+      })
+
+    });
+
+    feedingModal.present();
+
+  }
+
+  addLog(log:Log) {
+
+    let that = this;
+
+    var add_promise = new Promise(function (resolve, reject) {
+
+      that.database.getAnimalLogs(that.animal_name).then (function (logs) {
+
+        var logs_array:Log[] = <Log[]> logs;
+        logs_array.push(log);
+
+        return logs_array;
+
+      }).then (function (logs:Log[]) {
+
+        that.database.setAnimalLog(that.animal_name, logs).then (function (logs) {
+          resolve(logs);
+        }).catch (function (error) {
+          console.log(error);
+          reject(error)
+        })
+
+      }).catch (function (error) {
+        console.log(error);
+        reject(error);
+      })
+    })
+
+    return add_promise;
 
   }
 

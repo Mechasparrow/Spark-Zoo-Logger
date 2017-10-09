@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
 
+import {ViewController, NavController, NavParams} from 'ionic-angular';
+
+//Import the Log object
+import {Log} from '../../model/Log';
+
+//Import Database storage
+import {Storage} from '@ionic/storage';
+import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
+
 /**
  * Generated class for the FeedingComponent component.
  *
@@ -12,11 +21,45 @@ import { Component } from '@angular/core';
 })
 export class FeedingComponent {
 
-  text: string;
+  public feeding_date:Date = new Date();
 
-  constructor() {
-    console.log('Hello FeedingComponent Component');
-    this.text = 'Hello World';
+  public animal:string = "";
+  public branch:string = "";
+
+  //Database instance
+  private database:AnimalLogDatabase;
+
+  constructor(public navParams: NavParams, public viewCtrl: ViewController, private storage:Storage) {
+
+    this.database = new AnimalLogDatabase(this.storage);
+
+    this.animal = navParams.get('animal');
+    this.branch = navParams.get('branch');
+
+  }
+
+  renderDate() {
+    return this.feeding_date.toLocaleString();
+  }
+
+  confirm() {
+
+    console.log("confirm");
+
+    let new_log:Log = <Log> {
+      animal: this.animal,
+      branch: this.branch,
+      date: this.feeding_date,
+      type: "feeding",
+      description: this.animal + " was fed on " + this.feeding_date.toLocaleString()
+    }
+
+    this.viewCtrl.dismiss(new_log);
+
+  }
+
+  modalCancel() {
+    this.viewCtrl.dismiss();
   }
 
 }

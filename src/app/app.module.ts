@@ -11,6 +11,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BranchPage} from '../pages/branch/branch';
 
+//Modals
+import {FeedingComponent} from '../components/feeding/feeding';
+
 //Log Pages
 import { AnimalLogPage } from '../pages/animal-log/animal-log';
 import { ViewLogPage } from '../pages/view-log/view-log';
@@ -23,7 +26,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     BranchPage,
     AnimalLogPage,
-    ViewLogPage
+    ViewLogPage,
+    FeedingComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     BranchPage,
     AnimalLogPage,
-    ViewLogPage
+    ViewLogPage,
+    FeedingComponent
   ],
   providers: [
     StatusBar,
