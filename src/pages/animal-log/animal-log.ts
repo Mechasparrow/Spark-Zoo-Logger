@@ -19,6 +19,10 @@ import {FeedingComponent} from '../../components/feeding/feeding';
 
 import { ViewLogPage } from '../view-log/view-log';
 
+//Models
+
+import {Log} from '../../model/Log';
+
 /**
  * Generated class for the AnimalLogPage page.
  *
