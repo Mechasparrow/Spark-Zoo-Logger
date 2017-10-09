@@ -7,6 +7,22 @@ export class AnimalLogDatabase {
 
   }
 
+  emptyAnimalLog(animal:string) {
+
+      let that = this;
+
+      var empty_promise = new Promise(function (resolve, reject) {
+
+        that.setAnimalLog(animal, <Log[]> []).then (function (logs) {
+          resolve(logs);
+        }).catch (function (error) {
+          reject(error);
+        })
+      })
+
+      return empty_promise;
+  }
+
   setAnimalLog(animal:string, animal_logs:Log[]) {
 
     let that = this;
