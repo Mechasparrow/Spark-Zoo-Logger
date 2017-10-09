@@ -31,7 +31,11 @@ export class ViewLogPage {
     this.database = new AnimalLogDatabase(storage);
     this.animal_name = this.navParams.data.animal;
 
+    this.loadLogs();
 
+  }
+
+  loadLogs() {
     let that = this;
 
     this.database.getAnimalLogs(this.animal_name).then (function (logs) {
@@ -40,11 +44,26 @@ export class ViewLogPage {
     }).catch (function (error) {
       console.log("unable to get animal logs");
     })
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewLogPage');
+  }
+
+  renderDate(date:string) {
+
+    const log_date:Date = new Date(date);
+    return log_date.toLocaleString();
+  }
+
+  clearLogs() {
+
+    let that = this;
+
+    this.database.emptyAnimalLog(this.animal_name).then (function (logs) {
+      that.logs = <Log[]> logs;
+    })
+
   }
 
 }

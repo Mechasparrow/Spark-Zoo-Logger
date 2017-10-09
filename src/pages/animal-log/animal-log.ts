@@ -82,9 +82,11 @@ export class AnimalLogPage {
 
     feedingModal.onDidDismiss(function (log) {
 
-      let log:Log = <Log> log;
+      if (log == null) {
+        return;
+      }
 
-      var add_log = that.addLog(log);
+      var add_log = that.addLog(<Log> log);
 
       add_log.then(function (logs) {
         console.log(logs)

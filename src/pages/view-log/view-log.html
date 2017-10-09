@@ -15,4 +15,23 @@
 
 <ion-content padding>
 
+  <ion-row>
+
+    <button margin ion-col color = "secondary" ion-button outline block>
+      Send Out Logs
+    </button>
+
+    <button (click) = "clearLogs()" margin ion-col color = "danger" ion-button outline block>
+      Clear Logs
+    </button>
+
+  </ion-row>
+
+  <ion-list>
+    <ion-item *ngFor = "let log of logs.reverse()">
+      <h2>{{renderDate(log.date)}}</h2>
+      <p text-wrap>{{log.description}}</p>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
