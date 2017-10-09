@@ -66,4 +66,14 @@ export class ViewLogPage {
 
   }
 
+  renderIcon(type:string) {
+
+    var icons:any = {
+      "feeding": "leaf"
+    }
+
+    return icons[type];
+
+  }
+
 }

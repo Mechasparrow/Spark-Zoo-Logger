@@ -29,6 +29,9 @@
 
   <ion-list>
     <ion-item *ngFor = "let log of logs.reverse()">
+
+      <ion-icon name = "{{renderIcon(log.type)}}" item-start></ion-icon>
+
       <h2>{{renderDate(log.date)}}</h2>
       <p text-wrap>{{log.description}}</p>
     </ion-item>
