@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+import {ViewController, NavController, NavParams} from 'ionic-angular';
+
+//Import the Log object
+import {Log} from '../../model/Log';
+
 /**
  * Generated class for the AnimalBehaviorComponent component.
  *
@@ -12,11 +17,24 @@ import { Component } from '@angular/core';
 })
 export class AnimalBehaviorComponent {
 
-  text: string;
+  public animal:string = "";
+  public branch:string = "";
 
-  constructor() {
-    console.log('Hello AnimalBehaviorComponent Component');
-    this.text = 'Hello World';
+  public behavior_date:Date = new Date();
+
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+
+    this.animal = navParams.get('animal');
+    this.branch = navParams.get('branch');
+
+  }
+
+  behaviorSubmit() {
+
+  }
+
+  modalCancel() {
+    this.viewCtrl.dismiss();
   }
 
 }
