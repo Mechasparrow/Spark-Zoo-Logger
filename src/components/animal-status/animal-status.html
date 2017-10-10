@@ -18,8 +18,8 @@
 
     <ion-item>
       <ion-label>Select the status for the animal</ion-label>
-      <ion-select>
-        <ion-option value = "false">False</ion-option>
+      <ion-select [(ngModel)] = "status" name = "animal-status">
+        <ion-option *ngFor = "let s of statuses" [value] = "s">{{s}}</ion-option>
       </ion-select>
     </ion-item>
 
@@ -29,8 +29,15 @@
 
 <ion-footer>
 
-  <button ion-button color = "secondary">
-    Submit
-  </button>
+  <ion-row>
+    <button (click) = "submitStatus()" margin ion-col ion-button color = "secondary">
+      Submit
+    </button>
+
+    <button (click) = "modalCancel()" margin ion-col ion-button color = "danger">
+      Cancel
+    </button>
+
+</ion-row>
 
 </ion-footer>

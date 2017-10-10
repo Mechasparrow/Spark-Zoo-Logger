@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+import {ViewController, NavController, NavParams} from 'ionic-angular';
+
+//Import the Log object
+import {Log} from '../../model/Log';
+
 /**
  * Generated class for the AnimalStatusComponent component.
  *
@@ -12,15 +17,45 @@ import { Component } from '@angular/core';
 })
 export class AnimalStatusComponent {
 
-  text: string;
+  public animal:string = "";
+  public branch:string = "";
 
-  constructor() {
-    console.log('Hello AnimalStatusComponent Component');
-    this.text = 'Hello World';
+  public status_date:Date = new Date();
+
+  public statuses:string[] = [
+    "sleeping",
+    "awake",
+    "walking",
+    "eating",
+    "sick",
+    "not breathing"
+  ]
+
+  public status:string = this.statuses[0];
+
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+
+    this.animal = navParams.get('animal');
+    this.branch = navParams.get('branch');
+
   }
 
   submitStatus() {
 
+    let new_log:Log = <Log> {
+      animal: this.animal,
+      branch: this.branch,
+      date: this.status_date,
+      type: "animal-status",
+      description: this.animal + " has the status of " + this.status
+    }
+
+    this.viewCtrl.dismiss(new_log);
+
+  }
+
+  modalCancel() {
+    this.viewCtrl.dismiss();
   }
 
 }

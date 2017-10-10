@@ -5,10 +5,6 @@ import {ViewController, NavController, NavParams} from 'ionic-angular';
 //Import the Log object
 import {Log} from '../../model/Log';
 
-//Import Database storage
-import {Storage} from '@ionic/storage';
-import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
-
 /**
  * Generated class for the FeedingComponent component.
  *
@@ -26,12 +22,7 @@ export class FeedingComponent {
   public animal:string = "";
   public branch:string = "";
 
-  //Database instance
-  private database:AnimalLogDatabase;
-
-  constructor(public navParams: NavParams, public viewCtrl: ViewController, private storage:Storage) {
-
-    this.database = new AnimalLogDatabase(this.storage);
+  constructor(public navParams: NavParams, public viewCtrl: ViewController) {
 
     this.animal = navParams.get('animal');
     this.branch = navParams.get('branch');

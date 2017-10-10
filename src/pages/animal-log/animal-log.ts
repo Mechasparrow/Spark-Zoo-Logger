@@ -84,7 +84,19 @@ export class AnimalLogPage {
 
     let that = this;
 
-    statusModal.onDidDismiss(function (data) {
+    statusModal.onDidDismiss(function (log) {
+
+      if (log == null) {
+        return;
+      }
+
+      var add_log = that.addLog(<Log> log);
+
+      add_log.then(function (logs) {
+        console.log(logs)
+      }).catch (function (error) {
+        console.log(error);
+      })
 
     })
 
