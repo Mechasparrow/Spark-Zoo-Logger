@@ -14,6 +14,7 @@ import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
 
 //Modals
 import {FeedingComponent} from '../../components/feeding/feeding';
+import {AnimalStatusComponent} from '../../components/animal-status/animal-status';
 
 //Pages
 
@@ -75,6 +76,21 @@ export class AnimalLogPage {
     this.navCtrl.push(ViewLogPage, {animal: this.animal.name});
   }
 
+  logAnimalStatus() {
+    const statusModal = this.modalCtrl.create(AnimalStatusComponent, {
+        animal: this.animal_name,
+        branch: this.animal_branch
+    });
+
+    let that = this;
+
+    statusModal.onDidDismiss(function (data) {
+
+    })
+
+    statusModal.present();
+
+  }
 
   logFeeding() {
     const feedingModal = this.modalCtrl.create(FeedingComponent, {
