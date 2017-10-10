@@ -70,7 +70,8 @@ export class ViewLogPage {
 
     var icons:any = {
       "feeding": "leaf",
-      "animal-status": "pulse"
+      "animal-status": "pulse",
+      "animal-behavior": "search"
     }
 
     return icons[type];
