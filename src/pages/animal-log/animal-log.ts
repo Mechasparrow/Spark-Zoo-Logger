@@ -13,8 +13,10 @@ import {Storage} from '@ionic/storage';
 import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
 
 //Modals
+
 import {FeedingComponent} from '../../components/feeding/feeding';
 import {AnimalStatusComponent} from '../../components/animal-status/animal-status';
+import {AnimalBehaviorComponent} from '../../components/animal-behavior/animal-behavior';
 
 //Pages
 
@@ -74,6 +76,34 @@ export class AnimalLogPage {
 
   viewLog() {
     this.navCtrl.push(ViewLogPage, {animal: this.animal.name});
+  }
+
+  logAnimalBehavior() {
+    const behaviorModal = this.modalCtrl.create(AnimalBehaviorComponent, {
+        animal: this.animal_name,
+        branch: this.animal_branch
+    });
+
+    let that = this;
+
+    behaviorModal.onDidDismiss(function (log) {
+
+      if (log == null) {
+        return;
+      }
+
+      var add_log = that.addLog(<Log> log);
+
+      add_log.then(function (logs) {
+        console.log(logs)
+      }).catch (function (error) {
+        console.log(error);
+      })
+
+    })
+
+    behaviorModal.present();
+
   }
 
   logAnimalStatus() {
