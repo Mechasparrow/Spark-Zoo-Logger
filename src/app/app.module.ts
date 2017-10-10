@@ -15,7 +15,6 @@ import { BranchPage} from '../pages/branch/branch';
 //Modals
 import {FeedingComponent} from '../components/feeding/feeding';
 import {AnimalStatusComponent} from '../components/animal-status/animal-status';
-import {AnimalObservationComponent} from '../components/animal-observation/animal-observation';
 
 //Log Pages
 import { AnimalLogPage } from '../pages/animal-log/animal-log';
@@ -31,8 +30,7 @@ import { HttpModule } from '@angular/http';
     AnimalLogPage,
     ViewLogPage,
     FeedingComponent,
-    AnimalStatusComponent,
-    AnimalObservationComponent
+    AnimalStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +48,6 @@ import { HttpModule } from '@angular/http';
     ViewLogPage,
     FeedingComponent,
     AnimalStatusComponent,
-    AnimalObservationComponent
   ],
   providers: [
     StatusBar,
