@@ -19,4 +19,8 @@ export class AnimalStatusComponent {
     this.text = 'Hello World';
   }
 
+  submitStatus() {
+
+  }
+
 }
