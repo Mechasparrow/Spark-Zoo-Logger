@@ -17,7 +17,7 @@
   <form>
 
     <ion-item>
-      <ion-label>Select the status for the animal</ion-label>
+      <ion-label>Animal Status</ion-label>
       <ion-select [(ngModel)] = "status" name = "animal-status">
         <ion-option *ngFor = "let s of statuses" [value] = "s">{{s}}</ion-option>
       </ion-select>

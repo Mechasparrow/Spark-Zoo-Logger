@@ -22,6 +22,8 @@ export class AnimalBehaviorComponent {
 
   public behavior_date:Date = new Date();
 
+  public behavior:string = "";
+
   constructor(public viewCtrl: ViewController, public navParams: NavParams) {
 
     this.animal = navParams.get('animal');
@@ -30,6 +32,16 @@ export class AnimalBehaviorComponent {
   }
 
   behaviorSubmit() {
+
+    let new_log:Log = <Log> {
+      animal: this.animal,
+      branch: this.branch,
+      date: this.behavior_date,
+      type: "animal-behavior",
+      description: this.animal + " has the behavor of " + "\"" + this.behavior + "\""
+    }
+
+    this.viewCtrl.dismiss(new_log);
 
   }
 
