@@ -5,7 +5,11 @@ import { Animal } from '../../model/Animal';
 
 import { Http } from '@angular/http';
 
+import {HttpClient} from '@angular/common/http';
+
 import { Zoo } from '../../api/Zoo';
+
+import {EmailApi} from '../../api/EmailApi';
 
 //Storage
 
@@ -27,11 +31,11 @@ import { ViewLogPage } from '../view-log/view-log';
 import {Log} from '../../model/Log';
 
 /**
- * Generated class for the AnimalLogPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+* Generated class for the AnimalLogPage page.
+*
+* See https://ionicframework.com/docs/components/#navigation for more info on
+* Ionic pages and navigation.
+*/
 
 @IonicPage()
 @Component({
@@ -45,9 +49,14 @@ export class AnimalLogPage {
   public animal_name:string;
   public animal_branch:string;
 
+  private emailAPI:EmailApi;
   private database:AnimalLogDatabase;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public http:Http, public storage: Storage) {
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public http:Http, public http_client:HttpClient, public storage: Storage) {
+
+    //Initialize the email proxy;
+    this.emailAPI = new EmailApi(http_client);
 
     //Initialize the connection to the local database
     this.database = new AnimalLogDatabase(storage);
@@ -80,8 +89,8 @@ export class AnimalLogPage {
 
   logAnimalBehavior() {
     const behaviorModal = this.modalCtrl.create(AnimalBehaviorComponent, {
-        animal: this.animal_name,
-        branch: this.animal_branch
+      animal: this.animal_name,
+      branch: this.animal_branch
     });
 
     let that = this;
@@ -108,8 +117,8 @@ export class AnimalLogPage {
 
   logAnimalStatus() {
     const statusModal = this.modalCtrl.create(AnimalStatusComponent, {
-        animal: this.animal_name,
-        branch: this.animal_branch
+      animal: this.animal_name,
+      branch: this.animal_branch
     });
 
     let that = this;
@@ -191,6 +200,12 @@ export class AnimalLogPage {
     })
 
     return add_promise;
+
+  }
+
+  sendLogs() {
+
+    this.emailAPI.sendHTMLEmail("navazhylaum4714@parkwayschools.net", "Zoo Log", "<h1>Howdy</h1>") 
 
   }
 

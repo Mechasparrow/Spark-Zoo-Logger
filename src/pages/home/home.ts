@@ -7,6 +7,10 @@ import { Http } from '@angular/http';
 
 import { Zoo } from '../../api/Zoo';
 
+import {HttpClient} from '@angular/common/http';
+
+import {EmailApi} from '../../api/EmailApi';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,7 +20,7 @@ export class HomePage {
 
   public branches:string[] = [];
 
-  constructor(public navCtrl: NavController, public http:Http) {
+  constructor(public navCtrl: NavController, public http:Http, public httpclient: HttpClient) {
 
     var data_promise = Zoo.getBranchs(this.http);
 

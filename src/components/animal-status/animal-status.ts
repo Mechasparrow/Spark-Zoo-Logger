@@ -2,8 +2,15 @@ import { Component } from '@angular/core';
 
 import {ViewController, NavController, NavParams} from 'ionic-angular';
 
+//Import the EmailApi
+import {EmailApi} from '../../api/EmailApi';
+
 //Import the Log object
 import {Log} from '../../model/Log';
+
+import {HttpClient} from '@angular/common/http';
+
+import 'rxjs/add/operator/toPromise';
 
 /**
  * Generated class for the AnimalStatusComponent component.
