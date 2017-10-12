@@ -10,7 +10,18 @@ export class EmailApi {
 
   }
 
-  sendLogs(logs:Log[]) {
+  sendLogs(logs:Log[], animal_name:string) {
+
+    let that = this;
+
+    var promise = new Promise (function (resolve, reject) {
+      var html = "<p></p>";
+      logs.map(function (log) {
+        console.log(log);
+      })
+    })
+
+    return promise;
 
   }
 
@@ -22,9 +33,15 @@ export class EmailApi {
       html: html
     }
 
-    this.http.post('https://animal-monitor-email.glitch.me/send-animal-log',body).subscribe(data => {
-      console.log(data);
-    });
+    let that = this;
+
+    var promise = new Promise (function (resolve, reject)  {
+      that.http.post('https://animal-monitor-email.glitch.me/send-animal-log',body).subscribe(data => {
+       resolve(data);
+      });
+    })
+
+    return promise;
   }
 
   sendTextEmail(to:string, subject:string, text:string) {
@@ -36,9 +53,17 @@ export class EmailApi {
       html: ""
     }
 
-    this.http.post('https://animal-monitor-email.glitch.me/send-animal-log',body).subscribe(data => {
-      console.log(data);
+    let that = this;
+
+    var promise = new Promise (function (resolve, reject) {
+      that.http.post('https://animal-monitor-email.glitch.me/send-animal-log',body).subscribe(data => {
+        resolve(data);
+      });
     });
+
+    return promise;
+
+
 
   }
 

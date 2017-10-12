@@ -205,7 +205,15 @@ export class AnimalLogPage {
 
   sendLogs() {
 
-    this.emailAPI.sendHTMLEmail("navazhylaum4714@parkwayschools.net", "Zoo Log", "<h1>Howdy</h1>") 
+    let that = this;
+
+    that.database.getAnimalLogs(that.animal_name).then (function (logs) {
+
+      that.emailAPI.sendLogs(<Logs[]>logs);
+
+    })
+
+    this.emailAPI.sendHTMLEmail("navazhylaum4714@parkwayschools.net", "Zoo Log", "<h1>Howdy</h1>")
 
   }
 
