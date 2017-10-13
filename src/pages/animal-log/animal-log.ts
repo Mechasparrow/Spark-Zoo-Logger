@@ -209,11 +209,9 @@ export class AnimalLogPage {
 
     that.database.getAnimalLogs(that.animal_name).then (function (logs) {
 
-      that.emailAPI.sendLogs(<Logs[]>logs);
+      that.emailAPI.sendLogs(<Log[]>logs, that.animal_name, "navazhylaum4714@parkwayschools.net");
 
     })
-
-    this.emailAPI.sendHTMLEmail("navazhylaum4714@parkwayschools.net", "Zoo Log", "<h1>Howdy</h1>")
 
   }
 
