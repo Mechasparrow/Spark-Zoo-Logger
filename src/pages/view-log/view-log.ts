@@ -15,6 +15,12 @@ import { Log } from '../../model/Log';
 import {Storage} from '@ionic/storage';
 import {AnimalLogDatabase} from '../../db/AnimalLogDatabase';
 
+//Import the email sending library
+import {EmailApi} from '../../api/EmailApi';
+import {HttpClient} from '@angular/common/http';
+
+import {AlertController} from 'ionic-angular';
+
 @IonicPage()
 @Component({
   selector: 'page-view-log',
@@ -25,8 +31,11 @@ export class ViewLogPage {
   public logs:Log[] = [];
   public animal_name:string = "";
   private database:AnimalLogDatabase = null;
+  private emailAPI:EmailApi;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private http_client: HttpClient, private storage:Storage) {
+
+    this.emailAPI = new EmailApi(http_client);
 
     this.database = new AnimalLogDatabase(storage);
     this.animal_name = this.navParams.data.animal;
@@ -62,6 +71,38 @@ export class ViewLogPage {
 
     this.database.emptyAnimalLog(this.animal_name).then (function (logs) {
       that.logs = <Log[]> logs;
+    })
+
+  }
+
+  sendLogs() {
+
+    let that = this;
+
+    that.emailAPI.sendLogs(<Log[]> this.logs, this.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
+
+      if ((<any>result).message == "Queued. Thank you."){
+        const alert = that.alertCtrl.create({
+          title: "Animal logs sent!",
+          buttons: ['Dismiss']
+        });
+
+        alert.present();
+
+        console.log("message sen't");
+      }else {
+
+        const alert = that.alertCtrl.create({
+          title: "Unable to send Animal Logs",
+          buttons: ['Dismiss']
+        });
+
+        alert.present();
+
+
+
+      }
+
     })
 
   }

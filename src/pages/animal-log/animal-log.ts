@@ -22,6 +22,8 @@ import {FeedingComponent} from '../../components/feeding/feeding';
 import {AnimalStatusComponent} from '../../components/animal-status/animal-status';
 import {AnimalBehaviorComponent} from '../../components/animal-behavior/animal-behavior';
 
+import {AlertController} from 'ionic-angular';
+
 //Pages
 
 import { ViewLogPage } from '../view-log/view-log';
@@ -53,7 +55,7 @@ export class AnimalLogPage {
   private database:AnimalLogDatabase;
 
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public http:Http, public http_client:HttpClient, public storage: Storage) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public http:Http, public http_client:HttpClient, public storage: Storage, public alertCtrl: AlertController) {
 
     //Initialize the email proxy;
     this.emailAPI = new EmailApi(http_client);
@@ -209,7 +211,29 @@ export class AnimalLogPage {
 
     that.database.getAnimalLogs(that.animal_name).then (function (logs) {
 
-      that.emailAPI.sendLogs(<Log[]>logs, that.animal_name, "navazhylaum4714@parkwayschools.net");
+      that.emailAPI.sendLogs(<Log[]>logs, that.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
+        if ((<any>result).message == "Queued. Thank you."){
+          const alert = that.alertCtrl.create({
+            title: "Animal logs sent!",
+            buttons: ['Dismiss']
+          });
+
+          alert.present();
+
+          console.log("message sen't");
+        }else {
+
+          const alert = that.alertCtrl.create({
+            title: "Unable to send Animal Logs",
+            buttons: ['Dismiss']
+          });
+
+          alert.present();
+
+
+
+        }
+      })
 
     })
 
