@@ -108,7 +108,28 @@ export class ViewLogPage {
   }
 
   deleteLog(idx){
-    alert(idx);
+
+    //Get the reverse representation of the logs
+    var reverse_logs = this.logs.slice(0);
+    reverse_logs = reverse_logs.reverse();
+
+    //Delete the log in the reverse log array
+    reverse_logs.splice(idx, 1);
+    console.log(reverse_logs);
+
+    //Save the reverse back into regular logs;
+    this.logs = reverse_logs.reverse();
+
+    let that = this;
+
+    //Save to the database
+    this.database.setAnimalLog(this.animal_name, this.logs).then (function (logs) {
+      that.logs = <Log[]>logs;
+    }).catch (function (error) {
+      console.log(error);
+    })
+
+
   }
 
 
