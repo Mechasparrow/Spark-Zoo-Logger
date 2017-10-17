@@ -107,6 +107,12 @@ export class ViewLogPage {
 
   }
 
+  deleteLog(idx){
+    alert(idx);
+  }
+
+
+
   renderIcon(type:string) {
 
     var icons:any = {
