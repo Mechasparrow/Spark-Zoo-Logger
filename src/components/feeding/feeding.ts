@@ -22,6 +22,21 @@ export class FeedingComponent {
   public animal:string = "";
   public branch:string = "";
 
+  public food_amnt:number = 0;
+
+  public food_amnt_units:string[] = [
+    "Cups",
+    "Pounds",
+    "Ounces",
+    "Liters",
+    "Milliliters",
+    "Kilograms",
+    "Grams",
+    "Milligrams"
+  ]
+
+  public food_amnt_unit:string = this.food_amnt_units[0];
+
   constructor(public navParams: NavParams, public viewCtrl: ViewController) {
 
     this.animal = navParams.get('animal');
