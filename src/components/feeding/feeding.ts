@@ -57,7 +57,7 @@ export class FeedingComponent {
       branch: this.branch,
       date: this.feeding_date,
       type: "feeding",
-      description: this.animal + " was fed on " + this.feeding_date.toLocaleString()
+      description: this.animal + " was fed " + this.food_amnt + " " + this.food_amnt_unit + " of food on " + this.feeding_date.toLocaleString()
     }
 
     this.viewCtrl.dismiss(new_log);
