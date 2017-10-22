@@ -37,6 +37,8 @@ export class FeedingComponent {
 
   public food_amnt_unit:string = this.food_amnt_units[0];
 
+  public food_name:string = "";
+
   constructor(public navParams: NavParams, public viewCtrl: ViewController) {
 
     this.animal = navParams.get('animal');
@@ -52,12 +54,18 @@ export class FeedingComponent {
 
     console.log("confirm");
 
+    let food_name:string = "food"
+
+    if (this.food_name != "") {
+      food_name = this.food_name;
+    }
+
     let new_log:Log = <Log> {
       animal: this.animal,
       branch: this.branch,
       date: this.feeding_date,
       type: "feeding",
-      description: this.animal + " was fed " + this.food_amnt + " " + this.food_amnt_unit + " of food on " + this.feeding_date.toLocaleString()
+      description: this.animal + " was fed " + this.food_amnt + " " + this.food_amnt_unit + " of " + food_name + " on " + this.feeding_date.toLocaleString()
     }
 
     this.viewCtrl.dismiss(new_log);
