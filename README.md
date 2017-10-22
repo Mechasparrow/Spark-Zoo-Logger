@@ -13,6 +13,24 @@ This project helps zookeepers and staff better monitor their animals in a digita
 * Log the behavior of the animal (written)
 * Sends an email of the logs to a email address
 
+# Using it
+You can view the live version at [stlzoologger.surge.sh](http://stlzoologger.surge.sh)
+
+# Installation + Contribution
+
+To contribute or install locally, please make sure you have ionic installed
+
+`` npm install -g ionic cordova ``
+
+Then you can clone the project and run the project.
+
+```
+git clone https://github.com/Mechasparrow/Spark-Zoo-Logger.git
+cd ./Spark-Zoo-Logger
+ionic serve
+
+```
+
 # Todo
 
 - [ ] Scrape St.Louis Zoo website for rest of animals
