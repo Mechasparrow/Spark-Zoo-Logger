@@ -79,7 +79,9 @@ export class ViewLogPage {
 
     let that = this;
 
-    that.emailAPI.sendLogs(<Log[]> this.logs, this.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
+    var reverse_logs:any = (<Log[]>this.logs).slice().reverse();
+
+    that.emailAPI.sendLogs(reverse_logs, this.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
 
       if ((<any>result).message == "Queued. Thank you."){
         const alert = that.alertCtrl.create({

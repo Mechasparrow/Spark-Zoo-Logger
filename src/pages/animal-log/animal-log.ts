@@ -210,8 +210,9 @@ export class AnimalLogPage {
     let that = this;
 
     that.database.getAnimalLogs(that.animal_name).then (function (logs) {
+      var reverse_logs:any = (<Log[]>logs).slice().reverse();
 
-      that.emailAPI.sendLogs(<Log[]>logs, that.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
+      that.emailAPI.sendLogs(<Log[]>reverse_logs, that.animal_name, "navazhylaum4714@parkwayschools.net").then (function (result) {
         if ((<any>result).message == "Queued. Thank you."){
           const alert = that.alertCtrl.create({
             title: "Animal logs sent!",
