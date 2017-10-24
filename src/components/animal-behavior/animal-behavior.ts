@@ -31,6 +31,10 @@ export class AnimalBehaviorComponent {
 
   }
 
+  renderDate() {
+    return this.behavior_date.toLocaleString();
+  }
+
   behaviorSubmit() {
 
     let new_log:Log = <Log> {

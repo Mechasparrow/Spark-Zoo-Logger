@@ -47,6 +47,10 @@ export class AnimalStatusComponent {
 
   }
 
+  renderDate() {
+    return this.status_date.toLocaleString();
+  }
+
   submitStatus() {
 
     let new_log:Log = <Log> {
