@@ -20,21 +20,18 @@
   </ion-item>
 
 
-  <ion-row>
-    <ion-item col-6>
-      <ion-label>Amount of food fed:</ion-label>
-      <ion-input type = "number" [(ngModel)] = "food_amnt"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label>Amount of food fed:</ion-label>
+    <ion-input type = "number" [(ngModel)] = "food_amnt"></ion-input>
+  </ion-item>
 
-    <ion-item col-6>
-      <ion-label>Unit of Food:</ion-label>
-      <ion-select [(ngModel)] = "food_amnt_unit">
-        <ion-option [value] = "unit" *ngFor = "let unit of food_amnt_units">{{unit}}</ion-option>
-      </ion-select>
+  <ion-item>
+    <ion-label>Unit of Food:</ion-label>
+    <ion-select [(ngModel)] = "food_amnt_unit">
+      <ion-option [value] = "unit" *ngFor = "let unit of food_amnt_units">{{unit}}</ion-option>
+    </ion-select>
 
-    </ion-item>
-
-  </ion-row>
+  </ion-item>
 
   <ion-row>
     <ion-item>
